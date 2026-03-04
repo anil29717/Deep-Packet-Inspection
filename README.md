@@ -97,16 +97,16 @@ To start the full ecosystem, open three terminal windows from the `D:\DPI` root 
 
 ### Dashboard View
 > ```markdown
-> ![Dashboard Screenshot](./path/to/Dashboard.png)
+> [Dashboard Screenshot](./path/Dashboard.png)
 > ```
 
 ### Deep Packet Knowledge
 
 > ```markdown
-> ![Deep Packet View](./path/to/DeepPacket.png)
+> [Deep Packet View](./path/DeepPacket.png)
 > ```
 
 ### Analytics / Flows
 > ```markdown
-> ![Analytics View](./path/to/analytics.png)
+> [Analytics View](./path/analytics.png)
 > ```
