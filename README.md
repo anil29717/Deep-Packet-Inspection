@@ -90,3 +90,27 @@ To start the full ecosystem, open three terminal windows from the `D:\DPI` root 
    # Start Payload Extractor (Deep Packet Knowledge)
    python show_real_data.py
    ```
+
+---
+
+## 📸 Screenshots
+
+*(Add your screenshots manually below)*
+
+### Dashboard View
+> *Replace this with your dashboard screenshot.*
+> ```markdown
+> ![Dashboard Screenshot](./path/to/Dashboard.png)
+> ```
+
+### Deep Packet Knowledge
+> *Replace this with your deep packet view screenshot.*
+> ```markdown
+> ![Deep Packet View](./path/to/DeepPacket.png)
+> ```
+
+### Analytics / Flows
+> *Replace this with your analytics screenshot.*
+> ```markdown
+> ![Analytics View](./path/to/analytics.png)
+> ```
