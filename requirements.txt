@@ -1,0 +1,8 @@
+nfstream
+pandas
+mysql-connector-python
+requests
+python-dotenv
+schedule
+psutil
+loguru

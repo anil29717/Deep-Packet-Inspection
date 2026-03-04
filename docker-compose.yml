@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: dpi-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: office_dpi
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - mysql_data:/var/lib/mysql
+    networks:
+      - dpi-network
+
+  collector:
+    build:
+      context: .
+      dockerfile: collector/Dockerfile
+    container_name: dpi-collector
+    restart: unless-stopped
+    privileged: true
+    network_mode: "host"
+    environment:
+      - DB_HOST=127.0.0.1
+      - DB_USER=root
+      - DB_PASSWORD=12345
+      - DB_NAME=office_dpi
+    depends_on:
+      - db
+
+  api:
+    build:
+      context: ./api
+    container_name: dpi-api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=12345
+      - DB_NAME=office_dpi
+      - JWT_SECRET=super_secret_jwt_key_123!
+      - FRONTEND_URL=http://localhost:80
+    depends_on:
+      - db
+    networks:
+      - dpi-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: dpi-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - dpi-network
+
+volumes:
+  mysql_data:
+
+networks:
+  dpi-network:
+    driver: bridge
